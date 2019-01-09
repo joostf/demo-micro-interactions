@@ -1,1 +1,1 @@
-# demo-micro-interactions
+# Demo page for Blok Web, demonstrating micro interactions
