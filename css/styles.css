@@ -1,47 +1,105 @@
+:root {
+  --height: 0;
+  --primary: deeppink;
+  --secondary: purple;
+  --tertiary: gold;
+}
+
 body {
   font-size: 1.5em;
   font-family: open sans;
   margin: 0 auto;
-  width: 50vw;
-  background-color: deeppink;
+  width: 60vw;
+  background-color: var(--primary);
   color: #fff;
 
   transition: all 0.25s;
 }
 
 body.animate {
-  background-color: purple;
+  background-color: var(--secondary);
+}
+header {
+  position: relative;
+  z-index: 10;
+  padding: 1em 2em;
+  background-color: var(--primary);
+  border-bottom: 0.25em solid var(--secondary);
+  transition: all 0.25s;
+  margin: 0 -2em;
+}
+body.animate header {
+  background-color: var(--secondary);
+}
+h1 {
+  margin: 0;
+  white-space: nowrap;
 }
 
-h1 {
-  color: purple;
-  transition: all 0.25s 0.5s ease-in;
+article {
+  padding: 0 2em;
+  margin: 0 -2em 2em;
+  position: relative;
+  z-index: 5;
+  height: 20em;
+  overflow: hidden;
+  border-bottom: 0.25em solid var(--secondary);
 }
-body.animate h1 {
-  color: pink;
+article div {
+  transition: all 0.25s 0.5s ease-in;
+  transform: translateY(calc(var(--height) - 1em));
 }
 
 p {
-  transition: all 0.25s 0.5s ease-in;
+  transition: all 0.25s ease-in;
   padding: 1em;
-  margin: 1em -1em;
   background-color: rgba(0, 0, 0, 0.3);
-}
-body.animate p {
-  transform: translateX(5em);
-  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: hand;
 }
 
+p:after {
+  content: 'x';
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+
+  background-color: var(--secondary);
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0.25em;
+}
+p:hover:after {
+  background-color: var(--tertiary);
+}
+
+body.animate p {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+footer {
+}
 button {
-  background-color: gold;
+  background-color: var(--tertiary);
   border-radius: 0.25em;
   font-size: inherit;
   padding: 0.25em 0.5em;
   border: 0;
   box-shadow: 0 0 2px 5px rgba(0, 0, 0, 0.25);
   transition: 0.25s;
+  margin-left: 1em;
 }
 button:focus {
   box-shadow: none;
   transform: scale(0.9);
+}
+button:nth-of-type(2) {
+  opacity: 0;
+  transition: all 0.25s 0.25s ease-out;
+}
+button:nth-of-type(2).show {
+  opacity: 1;
 }
